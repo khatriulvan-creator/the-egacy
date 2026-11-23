@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Prompt Builder | THE PRINTED LEGACY</title>
+
+<style>
+:root {
+  --bg: #0b0b0b;
+  --panel: #171717;
+  --gold: #d6b56d;
+  --text: #f5f1e8;
+  --muted: #aaa49a;
+  --border: #30291e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.brand {
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+h1 {
+  margin-top: 25px;
+  font-size: 30px;
+}
+
+.subtitle {
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+form {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 25px;
+}
+
+label {
+  display: block;
+  margin: 17px 0 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px;
+  border-radius: 7px;
+  border: 1px solid #39342c;
+  background: #101010;
+  color: white;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 7px;
+  background: var(--gold);
+  color: #111;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.result {
+  display: none;
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid var(--gold);
+  border-radius: 10px;
+  background: #15130f;
+}
+
+.result h2 {
+  color: var(--gold);
+  font-size: 19px;
+}
+
+#output {
+  white-space: pre-wrap;
+  line-height: 1.8;
+  font-size: 14px;
+  color: #eee;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 20px;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: 26px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="brand">THE PRINTED LEGACY</div>
+
+<h1>AI Model Prompt Builder</h1>
+
+<p class="subtitle">
+Create a detailed fashion photoshoot prompt
+using your own clothing product details.
+</p>
+
+<form id="promptForm">
+
+<label>Product Name</label>
+<input id="product" placeholder="Example: Ajrakh 3-piece suit" required>
+
+<label>Clothing Type</label>
+<select id="type">
+<option>Salwar Suit</option>
+<option>Saree</option>
+<option>Kurta</option>
+<option>Dupatta</option>
+<option>Dress</option>
+<option>Shirt</option>
+<option>Other Ethnic Wear</option>
+</select>
+
+<label>Fabric & Print Details</label>
+<textarea id="fabric" placeholder="Describe fabric, print, embroidery, texture and design..."></textarea>
+
+<label>Product Colour</label>
+<input id="colour" placeholder="Example: Light purple with floral print">
+
+<label>Model</label>
+<select id="model">
+<option>Adult Indian female fashion model</option>
+<option>Adult Indian male fashion model</option>
+<option>Adult fashion model</option>
+<option>Mannequin product photography</option>
+</select>
+
+<label>Background</label>
+<select id="background">
+<option>Luxury palace architecture</option>
+<option>Neutral beige studio</option>
+<option>Heritage courtyard</option>
+<option>Minimal white studio</option>
+<option>Outdoor garden</option>
+<option>Traditional Indian interior</option>
+<option>Custom background</option>
+</select>
+
+<label>Custom Background (Optional)</label>
+<input id="customBackground" placeholder="Enter your preferred background">
+
+<label>Photography Style</label>
+<select id="style">
+<option>Luxury fashion editorial</option>
+<option>Natural daylight photography</option>
+<option>Cinematic fashion campaign</option>
+<option>Minimal product photography</option>
+<option>Traditional ethnic fashion catalogue</option>
+</select>
+
+<label>Image Ratio</label>
+<select id="ratio">
+<option>4:5 portrait</option>
+<option>9:16 vertical</option>
+<option>1:1 square</option>
+<option>3:4 portrait</option>
+<option>16:9 landscape</option>
+</select>
+
+<label>Extra Instructions</label>
+<textarea id="extra" placeholder="Pose, jewellery, camera angle, lighting, etc."></textarea>
+
+<button type="submit">Generate Prompt ✨</button>
+<button type="reset" class="secondary">Reset Form</button>
+
+</form>
+
+<div class="result" id="result">
+<h2>Your Fashion Prompt</h2>
+<div id="output"></div>
+
+<button onclick="copyPrompt()">Copy Prompt 📋</button>
+<button class="secondary" onclick="resetTool()">Create Another</button>
+</div>
+
+<p class="note">
+This tool creates written prompts only. It does not generate images.
+Always check the generated image against your original product.
+</p>
+
+<a href="index.html" class="back">← Back to Creative Studio</a>
+
+</div>
+
+<script>
+const form = document.getElementById("promptForm");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const product = document.getElementById("product").value.trim();
+  const type = document.getElementById("type").value;
+  const fabric = document.getElementById("fabric").value.trim();
+  const colour = document.getElementById("colour").value.trim();
+  const model = document.getElementById("model").value;
+  const backgroundChoice = document.getElementById("background").value;
+  const customBackground = document.getElementById("customBackground").value.trim();
+  const style = document.getElementById("style").value;
+  const ratio = document.getElementById("ratio").value;
+  const extra = document.getElementById("extra").value.trim();
+
+  const background = customBackground || backgroundChoice;
+
+  let prompt = `Create a ${style} photograph for a premium ethnic fashion brand.
+
+PRODUCT: ${product}
+CLOTHING TYPE: ${type}
+MODEL: ${model}
+PRODUCT COLOUR: ${colour || "As shown in the reference image"}
+FABRIC AND DESIGN: ${fabric || "Preserve the original product details shown in the reference"}
+
+BACKGROUND: ${background}
+IMAGE RATIO: ${ratio}
+
+IMPORTANT PRODUCT PRESERVATION:
+Use the uploaded product image as the primary reference.
+Preserve the original garment colour, print, pattern, fabric appearance, design, borders, details and proportions.
+Do not invent additional patterns, change colours, remove design elements or add extra garments.
+The clothing must remain the main focus of the photograph.
+
+Photography direction:
+Professional fashion photography, realistic fabric texture, natural garment folds, refined lighting, clean composition, premium editorial presentation and high detail.
+
+${extra ? "ADDITIONAL INSTRUCTIONS: " + extra : ""}
+
+Create a polished fashion campaign photograph suitable for an ethnic clothing catalogue and social media.`;
+
+  document.getElementById("output").textContent = prompt;
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("result").scrollIntoView({
+    behavior: "smooth"
+  });
+});
+
+function copyPrompt() {
+  const text = document.getElementById("output").textContent;
+
+  navigator.clipboard.writeText(text).then(function() {
+    alert("Prompt copied successfully!");
+  }).catch(function() {
+    alert("Copy failed. Please select and copy the text manually.");
+  });
+}
+
+function resetTool() {
+  form.reset();
+  document.getElementById("result").style.display = "none";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
