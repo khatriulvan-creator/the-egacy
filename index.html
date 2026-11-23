@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE PRINTED LEGACY | Creative Studio</title>
+
+<style>
+:root {
+  --bg: #0b0b0b;
+  --panel: #151515;
+  --gold: #d6b56d;
+  --gold-light: #f1d99b;
+  --text: #f5f1e8;
+  --muted: #aaa49a;
+  --border: #29251e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logo span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-top: 5px;
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.hero {
+  padding: 65px 20px 45px;
+  text-align: center;
+  max-width: 850px;
+  margin: auto;
+}
+
+.tag {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 7vw, 58px);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: auto;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 13px 22px;
+  background: var(--gold);
+  color: #111;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.section {
+  padding: 35px 20px 55px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.section-title {
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+.section-desc {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px;
+  transition: 0.2s;
+}
+
+.card:hover {
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.icon {
+  font-size: 27px;
+  margin-bottom: 17px;
+}
+
+.card h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.card button {
+  margin-top: 17px;
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid #55472c;
+  padding: 10px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.card button:hover {
+  background: #282116;
+}
+
+.notice {
+  border: 1px solid #3b3221;
+  background: #17140f;
+  padding: 17px;
+  border-radius: 8px;
+  margin-top: 25px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.notice strong {
+  color: var(--gold);
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+footer span {
+  color: var(--gold);
+}
+
+#message {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  width: max-content;
+  max-width: 90%;
+}
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    gap: 13px;
+  }
+
+  .hero {
+    padding-top: 45px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    THE PRINTED LEGACY
+    <span>CREATIVE STUDIO</span>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#tools">Tools</a>
+    <a href="#ajrakh">Ajrakh Studio</a>
+    <a href="#about">About</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="tag">YOUR CREATIVE WORKSPACE</div>
+
+  <h1>Create. Design.<br><span>Make Your Story.</span></h1>
+
+  <p>
+    A simple creative toolkit for fashion brands, clothing businesses
+    and content creators. Create prompts, scripts, captions and
+    marketing ideas with your own product details.
+  </p>
+
+  <a href="#tools" class="btn">EXPLORE TOOLS ↓</a>
+</section>
+
+<section class="section" id="tools">
+  <h2 class="section-title">Creative Tools</h2>
+
+  <p class="section-desc">
+    Choose a tool and create content for your next fashion project.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">👗</div>
+      <h3>AI Model Prompt Builder</h3>
+      <p>Create detailed fashion model photography prompts using your product details.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎬</div>
+      <h3>Reel Script Maker</h3>
+      <p>Plan engaging reels with hooks, scenes, text overlays and voiceovers.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🛍️</div>
+      <h3>Product Ad Creator</h3>
+      <p>Write product promotions for clothing, fabrics and fashion collections.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">✍️</div>
+      <h3>Caption & Hashtag Generator</h3>
+      <p>Create Instagram captions, descriptions, titles and relevant hashtags.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎨</div>
+      <h3>Colour Studio</h3>
+      <p>Explore colour combinations, background colours and typography palettes.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📸</div>
+      <h3>Photoshoot Planner</h3>
+      <p>Plan backgrounds, lighting, poses and creative fashion photography concepts.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="ajrakh">
+  <h2 class="section-title">Ajrakh Studio</h2>
+
+  <p class="section-desc">
+    Special creative tools for Ajrakh fabrics, traditional prints
+    and ethnic fashion content.
+  </p>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="icon">🧵</div>
+      <h3>Ajrakh Content Creator</h3>
+      <p>Create educational content, product descriptions and promotional ideas about Ajrakh.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">📱</div>
+      <h3>Ajrakh Reel Planner</h3>
+      <p>Build reel ideas around fabrics, designs, products and workshop footage.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+    <div class="card">
+      <div class="icon">💡</div>
+      <h3>Marketing Idea Generator</h3>
+      <p>Generate content ideas for showcasing your textile products online.</p>
+      <button onclick="comingSoon()">Open Tool →</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="about">
+  <h2 class="section-title">About This Studio</h2>
+
+  <div class="notice">
+    <strong>Important:</strong> This website is a creative prompt
+    and content toolkit. It generates written prompts, scripts,
+    captions and ideas using templates. It does not generate
+    actual AI images or videos.
+    <br><br>
+    No paid API, account, subscription or payment is required
+    to use the website's built-in tools.
+  </div>
+</section>
+
+<footer>
+  <span>THE PRINTED LEGACY</span><br>
+  Creative Studio · Made for Creators<br>
+  Free tools. Simple ideas. Creative possibilities.
+</footer>
+
+<div id="message">This tool is coming soon!</div>
+
+<script>
+function comingSoon() {
+  const message = document.getElementById("message");
+
+  message.style.display = "block";
+
+  setTimeout(function() {
+    message.style.display = "none";
+  }, 2500);
+}
+</script>
+
+</body>
+                           </html>
+                           
